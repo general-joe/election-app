@@ -1,39 +1,8 @@
 const { PrismaClient } = require("@prisma/client");
+
 const prisma = new PrismaClient();
 
-const getAllVoters = async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const candidates = await prisma.candidates.findMany({
-      where: {
-        id,
-      },
-    });
-    res.status(200).json({
-      candidates,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getVotersById = async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const voters = await prisma.voters.findUnique({
-      where: {
-        id,
-      },
-    });
-    res.status(200).json({
-      voters,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const CreateVotersFunction = async (req, res, next) => {
+const createVoterFunction = async (req, res, next) => {
   try {
     const data = req.body;
     const voters = await prisma.voters.create({
@@ -47,14 +16,10 @@ const CreateVotersFunction = async (req, res, next) => {
   }
 };
 
-const updateVotersFunction = async (req, res, next) => {
+const getAllVotersFunction = async (req, res, next) => {
   try {
     const data = req.body;
-    const id = req.params.id;
-    const voters = await prisma.voters.update({
-      where: {
-        id,
-      },
+    const voters = await prisma.voters.findMany({
       data,
     });
     res.status(201).json({
@@ -65,28 +30,12 @@ const updateVotersFunction = async (req, res, next) => {
   }
 };
 
-const deletedVotersFunction = async (req, res, next) => {
+const getVotersByIdFunction = async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const voters = await prisma.voters.delete({
-      where: {
-        id,
-      },
-    });
-    res.status(200).json({
-      voters,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getVotersByPositionId = async (req, res, next) => {
-  try {
-    const id = req.params.id;
+    const studentId = req.params.studentId;
     const voters = await prisma.voters.findUnique({
       where: {
-        id,
+        studentId,
       },
     });
     res.status(200).json({
@@ -96,11 +45,42 @@ const getVotersByPositionId = async (req, res, next) => {
     console.log(error);
   }
 };
-
+const updateVoterFunction = async (res, req, next) => {
+  try {
+    const studentId = req.params.studentId;
+    const data = req.body;
+    const voters = await prisma.voters.update({
+      where: {
+        studentId,
+      },
+      data,
+    });
+    res.status(201).json({
+      voters,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+const deleteVoterFunction = async (req, res, next) => {
+  const studentId = req.params.studentId;
+  try {
+    const voters = await prisma.voters.delete({
+      where: {
+        studentId,
+      },
+    });
+    res
+      .status(404)
+      .json(voters, { message: "Voter has been successfully deleted" });
+  } catch (error) {
+    console.log(error);
+  }
+};
 module.exports = {
-  getVotersById,
-  getAllVoters,
-  getVotersByPositionId,
-  CreateVotersFunction,
-  updateVotersFunction,
+  getAllVotersFunction,
+  getVotersByIdFunction,
+  createVoterFunction,
+  updateVoterFunction,
+  deleteVoterFunction,
 };

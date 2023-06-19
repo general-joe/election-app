@@ -1,9 +1,10 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const CreateCandidateFunction = async (req, res, next) => {
+const createCandidateFunction = async (req, res, next) => {
   try {
     const data = req.body;
+    console.log(data);
     const candidates = await prisma.candidates.create({
       data,
     });
@@ -41,17 +42,17 @@ const deletedCandidateFunction = async (req, res, next) => {
         id,
       },
     });
-    res.status(200).json({
-      candidates,
-    });
+    res
+      .status(404)
+      .json(candidate, { message: "Candidate has been successfully deleted " });
   } catch (error) {
     console.log(error);
   }
 };
 
-const getCandidateByPositionId = async (req, res, next) => {
+const getCandidateByPositionIdFunction = async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.params.positionId;
     const candidates = await prisma.candidates.findUnique({
       where: {
         id,
@@ -65,7 +66,7 @@ const getCandidateByPositionId = async (req, res, next) => {
   }
 };
 
-const updateByPositionId = async (req, res, next) => {
+const getSingleCandidateFunction = async (req, res, next) => {
   try {
     const id = req.params.id;
     const candidates = await prisma.candidates.findUnique({
@@ -73,17 +74,6 @@ const updateByPositionId = async (req, res, next) => {
         id,
       },
     });
-    res.status(200).json({
-      candidates,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getAllCandidates = async (req, res, next) => {
-  try {
-    const author = await prisma.candidates.findMany();
     res.status(200).json({
       candidates,
     });
@@ -93,10 +83,9 @@ const getAllCandidates = async (req, res, next) => {
 };
 
 module.exports = {
-  CreateCandidateFunction,
+  createCandidateFunction,
   updateCandidateFunction,
   deletedCandidateFunction,
-  getCandidateByPositionId,
-  updateByPositionId,
-  getAllCandidates,
+  getCandidateByPositionIdFunction,
+  getSingleCandidateFunction,
 };
