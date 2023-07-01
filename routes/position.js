@@ -10,6 +10,6 @@ const positions = require("../controllers/positions");
 positionsRouter.post("/", positions.createPositionFunction);
 positionsRouter.get("/", positions.getAllPositionFunction);
 positionsRouter.get("/:id", positions.getPositionByIdFunction);
-positionsRouter.delete("/", positions.deletePostionFunction);
-positionsRouter.patch("/", positions.updatePositionFunction);
+positionsRouter.delete("/:id", positions.deletePostionFunction);
+positionsRouter.patch("/:id", positions.updatePositionFunction);
 module.exports = positionsRouter;

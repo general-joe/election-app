@@ -6,7 +6,7 @@ const voters = require("../controllers/voters");
 
 votersRouter.post("/", voters.createVoterFunction);
 votersRouter.get("/", voters.getAllVotersFunction);
-votersRouter.get("/:id", voters.getVotersByIdFunction);
-votersRouter.delete("/", voters.deleteVoterFunction);
-votersRouter.patch("/", voters.updateVoterFunction);
+votersRouter.get("/:studentId", voters.getVotersByIdFunction);
+votersRouter.delete("/:studentId", voters.deleteVoterFunction);
+votersRouter.patch("/:studentId", voters.updateVoterFunction);
 module.exports = votersRouter;
