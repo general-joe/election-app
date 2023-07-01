@@ -12,7 +12,9 @@ const createVoterFunction = async (req, res, next) => {
       voters,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -26,7 +28,9 @@ const getAllVotersFunction = async (req, res, next) => {
       voters,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -42,7 +46,9 @@ const getVotersByIdFunction = async (req, res, next) => {
       voters,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 const updateVoterFunction = async (res, req, next) => {
@@ -59,7 +65,9 @@ const updateVoterFunction = async (res, req, next) => {
       voters,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 const deleteVoterFunction = async (req, res, next) => {
@@ -74,7 +82,9 @@ const deleteVoterFunction = async (req, res, next) => {
       .status(404)
       .json(voters, { message: "Voter has been successfully deleted" });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 module.exports = {

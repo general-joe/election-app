@@ -12,7 +12,9 @@ const createPositionFunction = async (req, res, next) => {
       positions,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -26,7 +28,9 @@ const getAllPositionFunction = async (req, res, next) => {
       positions,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -42,7 +46,9 @@ const getPositionByIdFunction = async (req, res, next) => {
       positions,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 const updatePositionFunction = async (res, req, next) => {
@@ -59,7 +65,9 @@ const updatePositionFunction = async (res, req, next) => {
       positions,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 const deletePostionFunction = async (req, res, next) => {
@@ -74,7 +82,9 @@ const deletePostionFunction = async (req, res, next) => {
       message: "Voter's positon has been successfully deleted",
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 module.exports = {

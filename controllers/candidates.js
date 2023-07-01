@@ -12,7 +12,9 @@ const createCandidateFunction = async (req, res, next) => {
       candidates,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -30,7 +32,9 @@ const updateCandidateFunction = async (req, res, next) => {
       candidates,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -46,7 +50,9 @@ const deletedCandidateFunction = async (req, res, next) => {
       .status(404)
       .json(candidate, { message: "Candidate has been successfully deleted " });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -62,7 +68,9 @@ const getCandidateByPositionIdFunction = async (req, res, next) => {
       candidates,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
@@ -78,7 +86,9 @@ const getSingleCandidateFunction = async (req, res, next) => {
       candidates,
     });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({
+      message: error.message,
+    });
   }
 };
 
