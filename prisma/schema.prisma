@@ -56,3 +56,4 @@ model voting {
   voters       voters?     @relation(fields: [votersId], references: [studentId])
   votersId     String?
 }
+
