@@ -1,0 +1,49 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\GENERALONE\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Users\GENERALONE\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\GENERALONE\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\150\Tools\Binn;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\120\Tools\Binn;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Users\GENERALONE\AppData\Local\Microsoft\WindowsApps;C:\Users\GENERALONE\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\GENERALONE\AppData\Roaming\npm;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.1.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error [ERR_SOCKET_CONNECTION_TIMEOUT]: Socket connection timeout
+      at new NodeError (node:internal/errors:399:5)
+      at internalConnectMultiple (node:net:1099:20)
+      at Timeout.internalConnectMultipleTimeout (node:net:1638:3)
+      at listOnTimeout (node:internal/timers:575:11)
+      at process.processTimers (node:internal/timers:514:7)
+
+npm manifest: 
+  {
+    "name": "election-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js",
+      "generate":"npx prisma generate"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@prisma/client": "^4.15.0",
+      "body-parser": "^1.20.2",
+      "express": "^4.18.2",
+      "prisma": "^4.15.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
